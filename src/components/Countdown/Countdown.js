@@ -38,7 +38,8 @@ class Countdown extends React.Component {
 		
 		return (
 			<div>
-				
+            
+				{this.state.minutes <2 ?
 				<div className='countdown-wrapper'>
 					
 					{minutes && (
@@ -56,6 +57,8 @@ class Countdown extends React.Component {
 						</div>
 					)}
 				</div>
+                : 
+                <h1>Poll Over</h1>}
 			</div>
 		);
 	}
