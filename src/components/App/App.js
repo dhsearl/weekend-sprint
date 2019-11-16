@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    handleInput = (e) =>{
+        this.props.dispatch({type:'ROUTE_INPUT', payload: e.target.value})
+    }
+    render() {
+        return (
+            <>
+            <div className="centered">
+                <input type="text" 
+                className="inputDarkMode"
+                value={this.props.newRouteInput} 
+                onChange={this.handleInput} />
+              
+                
+            </div>
+              <pre>{JSON.stringify(this.props,null,2)}</pre>
+              </>
+        );
+    }
 }
+const mapReduxStateToProps = (reduxState) => {
+    return reduxState
+}
+export default connect(mapReduxStateToProps)(App);
 
-export default App;
