@@ -1,17 +1,34 @@
-import { all, put, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
+import axios from 'axios';
 
 
-// export default function* rootSaga() {
-//     yield all([
-//       loginSaga(),
-//       registrationSaga(),
-//       userSaga(),
-//       shelfSaga(),
-//       inputSaga(),
-//     ]);
+
+
+// function* inputSaga() {
+//     // yield takeEvery('POST_ITEM', addItem);
 //   }
-function* inputSaga() {
-    // yield takeEvery('POST_ITEM', addItem);
-  }
+function* routeSaga(action) {
+    try {
+        
+        yield axios.post('/api/route',action.payload);
+        yield put({type:'CLEAR_INPUT'});
+        
+        const route = action.payload.newRouteInput;
+        console.log(route);
 
-export default inputSaga;
+        const { history } = action.payload;
+        yield history.push(`/${route}`);
+
+    } catch (error) {
+        console.log('routeSaga ERROR', error);
+        
+    }
+}
+
+
+function* rootSaga() {
+    yield takeEvery('ADD_ROUTE', routeSaga);
+    // yield takeEvery('DELETE_SHELF_ITEM', deleteItem);
+  }
+  
+  export default rootSaga;

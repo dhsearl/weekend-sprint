@@ -1,10 +1,15 @@
 import { combineReducers } from 'redux';
 
 
+const turnIntoRoute = (inputString) =>{
+    return inputString.replace(/\W+/g, '-').toLowerCase();
+}
 const newRouteInput = (state='', action) =>{
     switch (action.type) {
         case 'ROUTE_INPUT':
-            return action.payload;
+            return turnIntoRoute(action.payload);
+        case 'CLEAR_INPUT':
+            return '';    
         default:
             return state;
     }

@@ -24,7 +24,7 @@ app.use(passport.session());
 
 /* Routes  */
 app.use('/api/user', userRouter);
-app.use('/api/shelf', shelfRouter);
+app.use('/api/route', shelfRouter);
 
 // serve static files
 app.use(express.static('build'));
@@ -40,6 +40,7 @@ app.get('/:id', (req, res) => {
     if (data[req.params.id]) res.send(data[req.params.id]);
     else res.status(404).send({code: '404', message: 'no found'});
 })
+
 app.get("*", (req, res) => res.status(404).send({code: '404', message: 'no found'}))
 /** Listen * */
 app.listen(PORT, () => {
