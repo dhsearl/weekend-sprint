@@ -12,12 +12,22 @@ const newRouteInput = (state='', action) =>{
             return '';    
         default:
             return state;
+    }       
+}
+const pollStatus = (state ={}, action) =>{
+    switch(action.type) {
+        case 'SET_STATUS':
+            return action.payload.data;
+        case 'CLEAR_STATUS':
+            return {};
+        default:
+            return state;
     }
-        
 }
 
 export default combineReducers({
     newRouteInput,
+    pollStatus,
     // loginMessage,
     // registrationMessage,
   });

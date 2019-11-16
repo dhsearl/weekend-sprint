@@ -9,7 +9,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
-const shelfRouter = require('./routes/shelf.router');
+const pollRouter = require('./routes/poll.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -24,7 +24,7 @@ app.use(passport.session());
 
 /* Routes  */
 app.use('/api/user', userRouter);
-app.use('/api/route', shelfRouter);
+app.use('/api/route', pollRouter);
 
 // serve static files
 app.use(express.static('build'));
@@ -40,6 +40,8 @@ app.get('/:id', (req, res) => {
     if (data[req.params.id]) res.send(data[req.params.id]);
     else res.status(404).send({code: '404', message: 'no found'});
 })
+
+
 
 app.get("*", (req, res) => res.status(404).send({code: '404', message: 'no found'}))
 /** Listen * */
