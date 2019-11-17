@@ -14,7 +14,7 @@ const newRouteInput = (state='', action) =>{
             return state;
     }       
 }
-const pollStatus = (state ={}, action) =>{
+const pollStatus = (state={}, action) =>{
     switch(action.type) {
         case 'SET_STATUS':
             return action.payload.data;
@@ -24,10 +24,19 @@ const pollStatus = (state ={}, action) =>{
             return state;
     }
 }
+const idReducer = (state=null, action) =>{
+    switch(action.type){
+        case 'SET_ID':
+            return action.payload
+        default:
+            return state
+    }
+}
 
 export default combineReducers({
     newRouteInput,
     pollStatus,
+    idReducer,
     // loginMessage,
     // registrationMessage,
   });

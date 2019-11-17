@@ -11,9 +11,6 @@ function* fetchInformationSaga(action){
     }
 }
 
-// function* inputSaga() {
-//     // yield takeEvery('POST_ITEM', addItem);
-//   }
 function* addRouteSaga(action) {
     try {
         
@@ -36,7 +33,6 @@ function* addRouteSaga(action) {
 function* rootSaga() {
     yield takeEvery('ADD_ROUTE', addRouteSaga);
     yield takeEvery('FETCH_STATUS', fetchInformationSaga);
-    // yield takeEvery('DELETE_SHELF_ITEM', deleteItem);
   }
   
   export default rootSaga;
