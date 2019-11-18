@@ -2,14 +2,19 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 class Minutes extends Component {
-    componentDidMount(){
-        }
 
-    render() {
+    componentDidMount() {
+        this.interval = setInterval(() => 
         this.props.dispatch({
             type: 'FETCH_STATUS',
             payload: { url: this.props.route }
-        })
+        }), 1000);
+        }
+        componentWillUnmount() {
+        clearInterval(this.interval);
+        }
+    render() {
+        
         return (
             <table>
                 <tbody>
