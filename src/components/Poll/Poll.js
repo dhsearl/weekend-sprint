@@ -32,10 +32,10 @@ class Poll extends Component {
                     <h1>I'm a poll</h1>
                     <h3>{poll_name}</h3>    
                     <IntervalRenderer
-                interval={500}
-                shouldComponentRerender={this.handleShouldRerenderChild}
-                componentDidRerender={this.handleChildDidRerender}
-            >
+                    interval={500}
+                    shouldComponentRerender={this.handleShouldRerenderChild}
+                    componentDidRerender={this.handleChildDidRerender}
+                    >
                 <Minutes route = {this.props.match.params.route}/>
             </IntervalRenderer>
                 </div>
